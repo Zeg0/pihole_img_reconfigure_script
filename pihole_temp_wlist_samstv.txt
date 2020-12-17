@@ -1,0 +1,12 @@
+cdn.samsungcloudsolution.com
+osb.samsungqbe.com
+time.samsungcloudsolution.com
+configprd.samsungcloudsolution.net
+lcprd1.samsungcloudsolution.net
+acr0.samsungcloudsolution.com
+oemprd.samsungcloudsolution.com
+osb-eusvc.samsungqbe.com
+gpm.samsungqbe.com
+d1oxlq5h9kq8q5.cloudfront.net
+log-config.samsungacr.com
+notice.samsungcloudsolution.com

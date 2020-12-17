@@ -1,0 +1,4 @@
+192.168.178.1   fritz.box.honermann.lan fritz.box
+192.168.178.205   fritz.repeater.honermann.lan fritz.repeater
+192.168.178.56  raspberrypi-1.honermann.lan     raspberrypi-1
+192.168.178.236 raspberrypi-2.honermann.lan     raspberrypi-2
