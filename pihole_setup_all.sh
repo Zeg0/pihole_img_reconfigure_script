@@ -3,6 +3,7 @@ pihole -v
 
 chmod +x pihole_listen_on_all_dns_interfaces.sh
 ./pihole_listen_on_all_dns_interfaces.sh
+chmod -x pihole_listen_on_all_dns_interfaces.sh
 
 echo "... OK NEXT"
 sleep 1
@@ -59,6 +60,7 @@ echo '#!/bin/bash' > $filenamesh
 awk '{print "pihole -w "$1}' $filenametxt >> $filenamesh
 chmod +x $filenamesh
 ./$filenamesh
+chmod -x $filenamesh
 # whitelist samsungsmarttv
 filenametxt=pihole_temp_wlist_samstv.txt
 filenamesh=$(echo $filenametxt | sed 's/txt/sh/g')
@@ -66,6 +68,7 @@ echo '#!/bin/bash' > $filenamesh
 awk '{print "pihole -w "$1}' $filenametxt >> $filenamesh
 chmod +x $filenamesh
 ./$filenamesh
+chmod -x $filenamesh
 # whitelist xxx
 filenametxt=pihole_temp_wlist_xxx.txt
 filenamesh=$(echo $filenametxt | sed 's/txt/sh/g')
@@ -73,6 +76,7 @@ echo '#!/bin/bash' > $filenamesh
 awk '{print "pihole -w "$1}' $filenametxt >> $filenamesh
 chmod +x $filenamesh
 ./$filenamesh
+chmod -x $filenamesh
 # whitelist addvert allow, startup in own app usage and kali repo
 filenametxt=pihole_temp_wlist_addallow.txt
 filenamesh=$(echo $filenametxt | sed 's/txt/sh/g')
@@ -80,6 +84,7 @@ echo '#!/bin/bash' > $filenamesh
 awk '{print "pihole -w "$1}' $filenametxt >> $filenamesh
 chmod +x $filenamesh
 ./$filenamesh
+chmod -x $filenamesh
 
 # extra blacklists which are in no global blocklist yet (all, if it gets to heavy create your own github blocklist)
 filenametxt=pihole_temp_blist.txt
@@ -88,18 +93,20 @@ echo '#!/bin/bash' > $filenamesh
 awk '{print "pihole -w "$1}' $filenametxt >> $filenamesh
 chmod +x $filenamesh
 ./$filenamesh
+chmod -x $filenamesh
 
 echo "... OK NEXT"
 sleep 1
 
 chmod +x change_ssh_keys.sh
 ./change_ssh_keys.sh
-
+chmod -x change_ssh_keys.sh
 echo "... OK NEXT"
 sleep 1
 
 chmod +x pihole_change_credentials.sh
 ./pihole_change_credentials.sh
+chmod -x pihole_change_credentials.sh
 
 echo "... OK NEXT"
 sleep 1

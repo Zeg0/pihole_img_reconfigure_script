@@ -6,4 +6,11 @@ This project is for myself to setup my own local pihole. It is not intended to b
 However i made the project public so you can access the blocklist / whitelist .txt files if you like to.
 
 Usage:
-Copy this directory to your raspberry with pihole installed for the first setup. The start script is `.\pihole_setup_all.sh` which uses all other sources automatically.
+Copy this directory to your raspberry with pihole installed for the first setup. 
+Use the project like this:
+```
+   chmod +x pihole_setup_all.sh
+   .\pihole_setup_all.sh
+   pihole_setup_all.sh
+```
+(All other scripts are automatically executed from the setup_all. Setup asks you for new passwords and takes ~20mins to download new pihole version and new blocklists.)
