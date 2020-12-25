@@ -6,11 +6,18 @@ This project is for myself to setup my own local pihole. It is not intended to b
 However i made the project public so you can access the blocklist / whitelist .txt files if you like to.
 
 Usage:
-Copy this directory to your raspberry with pihole installed for the first setup. 
+Copy this directory to your raspberry with pihole installed for the first setup.
+(copy into a folder WORKDIRNAME)
+Prepare linefeeds:
+```
+   sudo apt-get install dos2unix
+   cd WORKDIRNAME
+   find . -type f -print0 | xargs -0 dos2unix
+```
 Use the project like this:
 ```
    chmod +x pihole_setup_all.sh
-   .\pihole_setup_all.sh
-   pihole_setup_all.sh
+   ./pihole_setup_all.sh
+   chmod -x pihole_setup_all.sh
 ```
 (All other scripts are automatically executed from the setup_all. Setup asks you for new passwords and takes ~20mins to download new pihole version and new blocklists.)
