@@ -7,3 +7,4 @@ config.uca.cloud.unity3d.com
 ad.api.ateam-ad.jp
 cdp.cloud.unity3d.com
 settings-win.data.microsoft.com
+(\.|^)amazonaws\.com$
