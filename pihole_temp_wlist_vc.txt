@@ -8,3 +8,4 @@ ad.api.ateam-ad.jp
 cdp.cloud.unity3d.com
 gobck.com
 www.gobck.com
+settings-win.data.microsoft.com
