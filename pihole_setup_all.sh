@@ -173,6 +173,22 @@ chmod +x $filenamesh
 chmod -x $filenamesh
 
 
+# whitelist valkyie connect game mobile and desktop cross platform steam game
+
+filenametxt=pihole_temp_wlist_vc.txt
+
+filenamesh=$(echo $filenametxt | sed 's/txt/sh/g')
+
+echo '#!/bin/bash' > $filenamesh
+
+awk '{print "pihole -w "$1}' $filenametxt >> $filenamesh
+
+chmod +x $filenamesh
+
+./$filenamesh
+
+chmod -x $filenamesh
+
 
 # extra blacklists which are in no global blocklist yet (all, if it gets to heavy create your own github blocklist)
 
@@ -182,7 +198,7 @@ filenamesh=$(echo $filenametxt | sed 's/txt/sh/g')
 
 echo '#!/bin/bash' > $filenamesh
 
-awk '{print "pihole -w "$1}' $filenametxt >> $filenamesh
+awk '{print "pihole -b "$1}' $filenametxt >> $filenamesh
 
 chmod +x $filenamesh
 
