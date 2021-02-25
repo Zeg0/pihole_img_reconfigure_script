@@ -1,0 +1,8 @@
+collector.githubapp.com
+fls-eu.amazon.de
+fls-eu.amazon.com
+launches.appsflyer.com
+api.smbeat.jp
+config.uca.cloud.unity3d.com
+ad.api.ateam-ad.jp
+cdp.cloud.unity3d.com
