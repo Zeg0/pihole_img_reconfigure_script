@@ -54,3 +54,4 @@ lunvon.com
 cdnjs.cloudflare.com
 mirror1.malwaredomains.com
 behance.net
+g.alicdn.com
