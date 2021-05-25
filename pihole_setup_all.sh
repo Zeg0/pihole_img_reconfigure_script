@@ -2,22 +2,33 @@
 
 pihole -v
 
+echo "Do you want to reset ssh keys on this device? [y/n]"
+read ynsshkeys
+case $ynsshkeys in 
+	[Yy]* ) chmod +x change_ssh_keys.sh;./change_ssh_keys.sh;chmod -x change_ssh_keys.sh; break;;
+	[Nn]* ) exit;;
+	*) echo "Type [y/n]"
+esac
 
+######################################################################################################
 
-chmod +x pihole_listen_on_all_dns_interfaces.sh
+echo "Do you want to change passwords on this device? [y/n]"
+read ynsshkeys
+case $ynsshkeys in 
+	[Yy]* ) chmod +x pihole_change_credentials.sh;./pihole_change_credentials.sh;chmod -x pihole_change_credentials.sh; break;;
+	[Nn]* ) exit;;
+	*) echo "Type [y/n]"
+esac 
 
-./pihole_listen_on_all_dns_interfaces.sh
+######################################################################################################
 
-chmod -x pihole_listen_on_all_dns_interfaces.sh
+echo "set pihole for LISTEN ON ALL INTERFACES..."
+pihole -a -i local
+echo "set pihole for LISTEN ON ALL INTERFACES... OK"
 
+######################################################################################################
 
-
-echo "... OK NEXT"
-
-sleep 1
-
-
-
+echo "// creating some local backup files (unused) ..."
 sudo mkdir -p /backups/etc/pihole/
 
 sudo cp /etc/pihole/adlists.list /backups/etc/pihole/adlists.list
@@ -28,38 +39,6 @@ sudo cp pihole_blocklists_alternative.txt /etc/pihole/adlists.list
 
 sudo cat /etc/pihole/adlists.list
 
-
-
-echo "... OK NEXT"
-
-sleep 1
-
-
-
-# sudo mkdir -p /backups/etc/pihole/
-
-sudo cp /etc/pihole/lan.list /backups/etc/pihole/lan.list
-
-sudo rm /etc/pihole/lan.list
-
-sudo cp pihole_dns_land_names.txt /etc/pihole/lan.list
-
-sudo cat /etc/pihole/lan.list
-
-
-
-echo "... OK NEXT"
-
-sleep 1
-
-
-
-sudo mkdir -p /backups/etc/sudoers.d/
-
-sudo cp /etc/sudoers.d/pihole /backups/etc/sudoers.d/pihole
-
-ls /backups/etc/sudoers.d/
-
 sudo mkdir -p /backups/etc/bash_completion.d/
 
 sudo cp /etc/bash_completion.d/pihole /backups/etc/bash_completion.d/pihole
@@ -67,14 +46,6 @@ sudo cp /etc/bash_completion.d/pihole /backups/etc/bash_completion.d/pihole
 # /etc/bash_completion.d/pihole --> https://github.com/pi-hole/pi-hole/blob/master/advanced/bash-completion/pihole"
 
 ls /backups/etc/bash_completion.d/
-
-
-
-echo "... OK NEXT"
-
-sleep 1
-
-
 
 sudo mkdir -p /backups/opt/pihole/
 
@@ -84,27 +55,34 @@ sudo cp /opt/pihole/list.sh /backups/opt/pihole/list.sh
 
 ls /backups/opt/pihole/
 
-
-
-echo "... OK NEXT"
-
-sleep 1
-
-
-
 #/etc/cron.d/pihole --> https://github.com/pi-hole/pi-hole/blob/master/advanced/Templates/pihole.cron
 
 sudo mkdir -p /backups/etc/cron.d/
 
 sudo cp /etc/cron.d/pihole /backups/etc/cron.d/pihole
 
+######################################################################################################
+
+echo "creating local LAN LIST dns-hostnames ..."
+
+sudo cp /etc/pihole/lan.list /backups/etc/pihole/lan.list
+
+sudo rm /etc/pihole/lan.list
+
+sudo cp pihole_dns_land_names.txt /etc/pihole/lan.list
+
+sudo cat /etc/pihole/lan.list
+echo "creating local LAN LIST dns-hostnames ... OK"
 
 
-echo "... OK NEXT"
+##### sudo mkdir -p /backups/etc/sudoers.d/
+##### sudo cp /etc/sudoers.d/pihole /backups/etc/sudoers.d/pihole
+##### ls /backups/etc/sudoers.d/
 
-sleep 1
+######################################################################################################
 
-
+echo "Adding WHITELIST domains..."
+sleep 2
 
 # whitelist (in multiple files by category) 
 
@@ -189,6 +167,10 @@ chmod +x $filenamesh
 
 chmod -x $filenamesh
 
+echo "Adding WHITELIST domains... OK"
+
+echo "Adding BLACKLIST domains..."
+sleep 2
 
 # extra blacklists which are in no global blocklist yet (all, if it gets to heavy create your own github blocklist)
 
@@ -206,45 +188,19 @@ chmod +x $filenamesh
 
 chmod -x $filenamesh
 
+echo "Adding BLACKLIST domains... OK"
 
+######################################################################################################
 
-echo "... OK NEXT"
-
-sleep 1
-
-
-
-chmod +x change_ssh_keys.sh
-
-./change_ssh_keys.sh
-
-chmod -x change_ssh_keys.sh
-
-echo "... OK NEXT"
+echo "Testing internet connection..."
 
 sleep 1
-
-
-
-chmod +x pihole_change_credentials.sh
-
-./pihole_change_credentials.sh
-
-chmod -x pihole_change_credentials.sh
-
-
-
-echo "... OK NEXT"
-
-sleep 1
-
-
 
 TEST_CURL_GITHUBG=$(curl https://github.com)
 
 if [[ $TEST_CURL_GITHUBG == *"GitHub"* ]]; then
 
-  echo "you can reach github OK"
+  echo "you can reach internet (github) OK"
 
 else
 
@@ -284,11 +240,17 @@ else
 
 fi
 
+######################################################################################################
 
+echo "Looking for updates for the raspberry pi software components..."
+sudo apt-get update -y
+echo "Looking for updates for the raspberry pi software components... OK"
 
+echo "Looking for updates for the pihole..."
 sudo pihole -up
+echo "Looking for updates for the pihole... OK"
 
-
+######################################################################################################
 
 echo "OK"
 
