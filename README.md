@@ -5,7 +5,7 @@ This project is for myself to setup my own local pihole. It is not intended to b
 
 However i made the project public so you can access the blocklist / whitelist .txt files if you like to.
 
-Usage:
+**USAGE: **
 Copy this directory to your raspberry with pihole installed for the first setup.
 (copy into a folder WORKDIRNAME)
 Prepare linefeeds:
@@ -21,3 +21,19 @@ Use the project like this:
    chmod -x pihole_setup_all.sh
 ```
 (All other scripts are automatically executed from the setup_all. Setup asks you for new passwords and takes ~20mins to download new pihole version and new blocklists.)
+
+
+**UPDATE / FIRST INSTALL**
+Download Rasperry pi imager https://www.raspberrypi.org/software/
+
+Choose Raspberry OS (Raspian) and your SD-Card. Press STRG+SHIFT+X for wlan and ssh advanced setup .
+
+Install SD and start your raspberry pi. Connect with tools like Putty ssh or WinSCP...
+
+Install Pihole: https://docs.pi-hole.net/main/basic-install/
+
+```
+	wget -O basic-install.sh https://install.pi-hole.net
+	sudo bash basic-install.sh
+```
+
