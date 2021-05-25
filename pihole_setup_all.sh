@@ -2,23 +2,27 @@
 
 pihole -v
 
-echo "Do you want to reset ssh keys on this device? [y/n]"
-read ynsshkeys
-case $ynsshkeys in 
-	[Yy]* ) chmod +x change_ssh_keys.sh;./change_ssh_keys.sh;chmod -x change_ssh_keys.sh; break;;
-	[Nn]* ) exit;;
-	*) echo "Type [y/n]"
-esac
+while true; do
+	echo "Do you want to reset ssh keys on this device? [y/n]"
+	read ynsshkeys
+	case $ynsshkeys in 
+		[Yy]* ) chmod +x change_ssh_keys.sh;./change_ssh_keys.sh;chmod -x change_ssh_keys.sh; break;;
+		[Nn]* ) exit;;
+		*) echo "Type [y/n]"
+	esac
+done
 
 ######################################################################################################
 
-echo "Do you want to change passwords on this device? [y/n]"
-read ynsshkeys
-case $ynsshkeys in 
-	[Yy]* ) chmod +x pihole_change_credentials.sh;./pihole_change_credentials.sh;chmod -x pihole_change_credentials.sh; break;;
-	[Nn]* ) exit;;
-	*) echo "Type [y/n]"
-esac 
+while true; do
+	echo "Do you want to change passwords on this device? [y/n]"
+	read ynsshkeys
+	case $ynsshkeys in 
+		[Yy]* ) chmod +x pihole_change_credentials.sh;./pihole_change_credentials.sh;chmod -x pihole_change_credentials.sh; break;;
+		[Nn]* ) exit;;
+		*) echo "Type [y/n]"
+	esac 
+done
 
 ######################################################################################################
 
