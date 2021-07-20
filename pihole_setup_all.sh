@@ -7,8 +7,8 @@ while true; do
 	read ynsshkeys
 	case $ynsshkeys in 
 		[Yy]* ) chmod +x change_ssh_keys.sh;./change_ssh_keys.sh;chmod -x change_ssh_keys.sh; break;;
-		[Nn]* ) exit;;
-		*) echo "Type [y/n]"
+		[Nn]* ) break;;
+		*) echo "Please type [y/n]"
 	esac
 done
 
@@ -19,10 +19,18 @@ while true; do
 	read ynsshkeys
 	case $ynsshkeys in 
 		[Yy]* ) chmod +x pihole_change_credentials.sh;./pihole_change_credentials.sh;chmod -x pihole_change_credentials.sh; break;;
-		[Nn]* ) exit;;
-		*) echo "Type [y/n]"
+		[Nn]* ) break;;
+		*) echo "Please type [y/n]"
 	esac 
 done
+
+######################################################################################################
+
+echo "use your own STATIC IPs configuration in dnsmasq dhcp leases config..."
+chmod +x pihole_add_static_iplease_dhcp.sh
+./pihole_add_static_iplease_dhcp.sh
+chmod -x pihole_add_static_iplease_dhcp.sh
+echo "use your own STATIC IPs configuration in dnsmasq dhcp leases config... OK"
 
 ######################################################################################################
 
